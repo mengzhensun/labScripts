@@ -1,6 +1,5 @@
-from IPython.core.debugger import Pdb
-ipdb = Pdb()
 import re
+import commands
 f = open('mutation.edge','r')
 x = f.readlines()
 f.close()
@@ -9,7 +8,8 @@ for a in x:
     key = re.findall(r'\w*\:\w*',a)[0]
     value = re.findall(r'[A-Z][A-Z][A-Z][0-9]*',a)[0]
     b[key] = value
-f = open('results.txt', 'r')
+output = commands.getoutput('grep "ddG =" *log > results.txt')
+f = open('results.txt', 'r') 
 y = f.readlines()
 f.close()
 res = {}
@@ -24,5 +24,7 @@ for key in sorted(res):
     print(key,res[key])
     f.write(res[key])
     f.write("\n")
+for key in sorted(res):
+    print(res[key])
 f.close()
 
