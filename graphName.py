@@ -26,8 +26,16 @@ for name in Name:
     compName = "tar xzf *" + name + "_complex_8*"
     output = commands.getoutput(solName)
     output = commands.getoutput(compName)
+output = commands.getoutput("mkdir graph")
 i = 0
 for name in Name:
-    solName = "*" + name + "_solvent_fep1"
-    compName = "*" + name + "_complex_fep1"
- 
+    solName = "*" + name + "_solvent_"
+    compName = "*" + name + "_complex_"
+    graphName = mutationName[i]
+    solventCopy =  "cp " + solName + "fep1/" + solName + "*/freeenergy_time.png graph/" + graphName + ".png"
+    complexCopy =  "cp " + compName + "fep1/" + compName + "*/freeenergy_time.png graph/" + graphName + ".png"
+    output = commands.getoutput(solventCopy)
+    output = commands.getoutput(complexCopy)
+    i += 1
+output = commands.getoutput("tar -cvzf graph.tgz ./graph")
+
