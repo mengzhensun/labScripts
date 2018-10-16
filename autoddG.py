@@ -42,7 +42,7 @@ for i in range(m):
         name2 = pdb+"_"+str(i+1)+"_"+str(j)
         print (name1, name2)
         # calculate wt energy
-        os.system("./complex.sh " + name1+".pdb"+" "+'A')
+        os.system("./complex.sh " + name1+".pdb"+" "+chain)
         os.system("cat Interaction_" + name1 + "_AC.fxout|grep '.pdb' > temp.txt")
         f = open("temp.txt", 'r')
         res1 = f.read().split('\t')
@@ -50,7 +50,7 @@ for i in range(m):
         wtE[i].append(e1)
         f.close()
         # calculate mt energy
-        os.system("./complex.sh " + name2 +".pdb"+" "+'A')
+        os.system("./complex.sh " + name2 +".pdb"+" "+chain)
         os.system("cat Interaction_" + name2 + "_AC.fxout|grep '.pdb' > temp.txt")
         f = open("temp.txt", 'r')
         res2 = f.read().split('\t')
