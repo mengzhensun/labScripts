@@ -10,4 +10,6 @@ use name with format mutation_XXXXXX and command qacct to search the completed j
 
 ## foldx calculation
 running commands: 
-python autoddG.py 3SGB (#num of mutations) (#of build running times) (#of repair times) (chain name) 
+python autoddG.py 3SGB (#num of mutations) (#of build running times) (#of repair times) (chain name);
+### all files needed:
+a pdb file, repair.sh, build.sh, complex.sh, rotabase.txt, and foldx program
